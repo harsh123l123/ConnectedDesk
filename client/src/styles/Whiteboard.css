@@ -1,0 +1,233 @@
+.whiteboard-container {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #0f172a;
+  overflow: hidden;
+  display: flex;
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  z-index: 9999;
+}
+
+/* Sidebar Toolbar */
+.whiteboard-sidebar {
+  width: 72px;
+  background: rgba(15, 23, 42, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 12px;
+  backdrop-filter: blur(12px);
+  z-index: 100;
+}
+
+.whiteboard-logo {
+  font-size: 1.5rem;
+  color: #6366f1;
+  margin-bottom: 20px;
+}
+
+.tool-sep {
+  width: 30px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 5px 0;
+}
+
+/* Floating Toolbar (Top) */
+.whiteboard-topbar {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(12px);
+  padding: 8px 20px;
+  border-radius: 100px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  z-index: 50;
+}
+
+.topbar-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.chat-name-tag {
+  background: rgba(99, 102, 241, 0.2);
+  color: #818cf8;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+/* Canvas Area */
+.canvas-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: #1e293b;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.whiteboard-canvas {
+  touch-action: none;
+  display: block;
+}
+
+/* Tool Buttons */
+.tool-btn {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.tool-btn.active {
+  background: #6366f1;
+  color: white;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+.tool-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.tool-tooltip {
+  position: absolute;
+  left: 60px;
+  background: #0f172a;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tool-btn:hover .tool-tooltip {
+  opacity: 1;
+}
+
+/* Properties Panel */
+.properties-panel {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(30, 41, 59, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 24px;
+  width: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  z-index: 50;
+}
+
+.prop-group {
+  margin-bottom: 20px;
+}
+
+.prop-group:last-child {
+  margin-bottom: 0;
+}
+
+.prop-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.color-option {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+.color-option.active {
+  border-color: white;
+  transform: scale(1.1);
+}
+
+.size-slider {
+  width: 100%;
+  accent-color: #6366f1;
+}
+
+/* Bottom Controls */
+.bottom-controls {
+  position: absolute;
+  bottom: 30px;
+  left: 100px;
+  display: flex;
+  gap: 12px;
+  z-index: 50;
+}
+
+.control-pill {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(12px);
+  padding: 6px 12px;
+  border-radius: 12px;
+  display: flex;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.properties-panel, .whiteboard-topbar {
+  animation: fadeIn 0.4s ease-out;
+}

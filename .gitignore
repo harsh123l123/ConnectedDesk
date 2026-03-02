@@ -1,0 +1,24 @@
+# Root gitignore for ConnectedDesk
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Node modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build outputs
+client/dist/
+
+# Environment files
+.env
+server/.env
+client/.env
+
+# Local settings
+.vscode/
+.idea/
+.DS_Store
