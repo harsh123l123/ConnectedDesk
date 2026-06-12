@@ -89,12 +89,13 @@ const Whiteboard = () => {
       case 'rect':
         ctx.strokeRect(d.x0, d.y0, d.x1 - d.x0, d.y1 - d.y0);
         break;
-      case 'circle':
+      case 'circle': {
         const radius = Math.sqrt(Math.pow(d.x1 - d.x0, 2) + Math.pow(d.y1 - d.y0, 2));
         ctx.beginPath();
         ctx.arc(d.x0, d.y0, radius, 0, 2 * Math.PI);
         ctx.stroke();
         break;
+      }
       case 'arrow':
         drawArrow(ctx, d.x0, d.y0, d.x1, d.y1, d.width);
         break;
